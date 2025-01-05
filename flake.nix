@@ -10,14 +10,15 @@
   outputs =
     inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      imports = [ ./treefmt.nix ];
+      imports = [
+        ./treefmt.nix
+        ./modules
+      ];
       systems = [ "x86_64-linux" ];
 
-      flake = {
-        nixosModules = {
-          virtualization = ./modules/virtualization.nix;
-	  eza = ./modules/eza.nix;
-        };
+      monarchModules = {
+        virtualization = ./modules/virtualization.nix;
+        eza = ./modules/eza.nix;
       };
     };
 }
