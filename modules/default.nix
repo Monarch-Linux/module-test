@@ -17,5 +17,9 @@
     );
   };
 
-  config.flake.nixosModules = config.monarchModules;
+  config.flake.nixosModules = {
+    default = {
+      imports = builtins.attrValues config.monarchModules;
+    };
+  } // config.monarchModules;
 }
