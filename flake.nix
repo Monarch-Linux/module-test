@@ -15,6 +15,7 @@
 
       flake = {
         nixosModules = {
+          virtualization = ./modules/virtualization.nix;
         };
       };
     };
